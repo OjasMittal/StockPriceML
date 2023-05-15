@@ -10,9 +10,13 @@ Stock_Market = {'Year': [2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,
                 'Stock_Index_Price': [1464,1394,1357,1293,1256,1254,1234,1195,1159,1167,1130,1075,1047,965,943,958,971,949,884,866,876,822,704,719]
                 }
 
+
+
 df = pd.DataFrame(Stock_Market,columns = ['Year','Month','EconomicGrowth_Rate','Unemployment_Rate','Stock_Index_Price'])
 x = df[['EconomicGrowth_Rate','Unemployment_Rate']]
 y = df['Stock_Index_Price']
+
+
 
 lr = linear_model.LinearRegression()
 lr.fit(x,y)
@@ -58,12 +62,14 @@ def plot():
     st.text(" ")
     st.text(" ")
     st.text(" ")
+
 plot()
 
 e = st.number_input("Enter Economic Growth Rate")
 st.text(" ")
 u = st.number_input("Enter Unemployment Rate")
 st.text(" ")
+
 if st.button("Predict"):
     st.subheader("Predicted Value of Stock Index")
     st.text(lr.predict([[e,u]])[0])
